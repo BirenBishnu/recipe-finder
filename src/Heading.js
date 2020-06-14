@@ -59,11 +59,17 @@ class Heading extends Component {
             <input type="button" value="Get Recipes" onClick={() => this.handleGetRecipes()} />
           </span>
         </div>
-        
-           <MealCard /> 
-          
+        {this.state.loading ? (
+          <p>Loading...</p>
+        ) : this.state.mealsData.length !== 0 ? (
+          this.state.mealsData.map((item, index) => (
+           <MealCard item={item} key={index}/> 
+          ))
+        ) : this.state.noData !== '' ? (
+          <p>{this.state.noData}</p>
+        ) : (
           <h3>Type a Dish Name to Search for it's ingredients</h3>
-        
+        )}
       </div>
     );
   }
