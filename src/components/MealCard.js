@@ -59,9 +59,12 @@ class MealCard extends Component {
                                 ))}
                             </div>
                         </div>
-
-
-
+                        <div style={{ marginTop: '10px', textAlign: 'center' }}>
+                            <em>Recipes: </em>
+                            <div style={{ height: "auto", width: "700px", backgroundColor: "#D7D0D0" }}>
+                                {this.props.item.strInstructions}
+                            </div>
+                        </div>
 
                     </div>
                 </div>
