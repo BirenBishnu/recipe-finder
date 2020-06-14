@@ -15,6 +15,9 @@ class MealCard extends Component {
 
     render() {
 
+
+        
+
         return (
             <div className="mealCard" >
                 <div style={{ display: "flex" }}>
@@ -33,9 +36,20 @@ class MealCard extends Component {
                     <div className="grid-item" style={{ width: '20%' }}>
                         <img src={this.props.item.strMealThumb} alt={this.props.item.strMeal} width="300" height="300" style={{ border: "1px solid" }} />
                     </div>
+                    <div className="grid-item1">
+                        <div>
+                            <em>Category of Meal - </em>
+                            {this.props.item.strCategory}
+                        </div>
+                        <div>
+                            <em>Area of the Meal - </em>
+                            {this.props.item.strArea}
+                        </div>
+                        
 
+                        
+                    </div>
                 </div>
-
 
 
 
