@@ -1,8 +1,52 @@
 import React, { Component } from 'react';
 import './Heading.css';
+import axios from 'axios';
+import MealCard from './components/MealCard';
 
 
 class Heading extends Component {
+
+  constructor(props) {
+    super(props);
+
+    this.state = { 
+      loading: false, 
+      dishName: '', 
+      mealsData: [], 
+      noData: '' };
+  }
+
+  handleGetRecipes() {
+    this.setState((prevState) => ({ ...prevState, mealsData:[]}));
+    
+    if (this.state.dishName === '') {
+      alert('Please Enter the Name of the Dish');
+    } else {
+     
+      this.setState((prevState) => ({ ...prevState, loading: true }));
+
+      axios
+        .get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${this.state.dishName}`)
+        .then((response) => {
+          if (response.data.meals) {
+            this.setState((prevState) => ({ ...prevState, mealsData: [...response.data.meals] }));
+          } else {
+            this.setState((prevState) => ({ ...prevState, noData: 'No data has been received' }));
+          }
+          
+          this.setState((prevState) => ({ ...prevState, loading: false }));
+        })
+        .catch((err) => {
+          console.log('Error: ', err);
+        });
+    }
+  }
+
+  handleChange(event) {
+    event.persist();
+    this.setState((prevState) => ({ ...prevState, [event.target.name]: event.target.value }));
+  }
+
   render() {
     return (
       <div className="container">
@@ -15,7 +59,11 @@ class Heading extends Component {
             <input type="button" value="Get Recipes" onClick={() => this.handleGetRecipes()} />
           </span>
         </div>
-        <h3>Type a Dish Name to Search for it's ingredients</h3>
+        
+           <MealCard /> 
+          
+          <h3>Type a Dish Name to Search for it's ingredients</h3>
+        
       </div>
     );
   }
