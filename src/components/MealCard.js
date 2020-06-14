@@ -15,8 +15,14 @@ class MealCard extends Component {
 
     render() {
 
+        let ingredientList = [];
+        for (let counter = 1; counter <= 20; counter++) {
 
-        
+            if (this.props.item["strIngredient" + counter] && this.props.item["strMeasure" + counter] && this.props.item["strIngredient" + counter] !== "" && this.props.item["strMeasure" + counter] !== "") {
+                ingredientList.push(`${this.props.item["strIngredient" + counter]} - ${this.props.item["strMeasure" + counter]}`);
+            }
+        }
+
 
         return (
             <div className="mealCard" >
@@ -45,9 +51,18 @@ class MealCard extends Component {
                             <em>Area of the Meal - </em>
                             {this.props.item.strArea}
                         </div>
-                        
+                        <div style={{ marginTop: '10px' }}>
+                            <em>Ingredients: </em>
+                            <div style={{ overflowY: "auto", height: "200px", width: "600px", padding: "0px 15px", backgroundColor: "#D7D0D0" }}>
+                                {ingredientList.map((item, index) => (
+                                    <p key={index}>{item}</p>
+                                ))}
+                            </div>
+                        </div>
 
-                        
+
+
+
                     </div>
                 </div>
 
