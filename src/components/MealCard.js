@@ -40,9 +40,9 @@ class MealCard extends Component {
 
                 <div className="grid">
                     <div className="grid-item" style={{ width: '20%' }}>
-                        <img src={this.props.item.strMealThumb} alt={this.props.item.strMeal} width="300" height="300" style={{ border: "1px solid" }} />
+                        <img src={this.props.item.strMealThumb} alt={this.props.item.strMeal} width="300" height="300" style={{ border: "2px solid", float:"left" }} />
                     </div>
-                    <div className="grid-item1">
+                    <div className="grid-item">
                         <div>
                             <em>Category of Meal - </em>
                             {this.props.item.strCategory}
@@ -61,7 +61,7 @@ class MealCard extends Component {
                         </div>
                         <div style={{ marginTop: '10px', textAlign: 'center' }}>
                             <em>Recipes: </em>
-                            <div style={{ height: "auto", width: "700px", backgroundColor: "#D7D0D0" }}>
+                            <div style={{ height: "auto", width: "600px", backgroundColor: "#D7D0D0" }}>
                                 {this.props.item.strInstructions}
                             </div>
                         </div>
